@@ -39,7 +39,7 @@ const CustomPageFiltersContet = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/getAllCustomUrls')
+      .get('https://humbletitan-stocks.herokuapp.com/getAllCustomUrls')
       .then(({ data }) => {
         setAllUrls(data.map((item) => item.url))
         console.log(allUrls)
@@ -74,7 +74,7 @@ const CustomPageFiltersContet = () => {
       default:
     }
     axios
-      .get('http://localhost:8000/alltickersort')
+      .get('https://humbletitan-stocks.herokuapp.com/alltickersort')
       .then((res) => setAllCompanies([...res.data]))
   }, [tableName])
 
@@ -90,7 +90,7 @@ const CustomPageFiltersContet = () => {
     }
     axios
       .post(
-        `https://humbletitanapi.herokuapp.com/filteredData?filterlabel=${filter}&filterCondition=${filterCondition}&filterValue=${filterValue}`,
+        `https://humbletitan-stocks.herokuapp.com/filteredData?filterlabel=${filter}&filterCondition=${filterCondition}&filterValue=${filterValue}`,
         dataToBePublished,
       )
       .then(({ data }) => {
@@ -168,19 +168,19 @@ const CustomPageFiltersContet = () => {
     setGeneratedUrl('')
     switch (filterCondition) {
       case 'Equal To':
-        url = `http://localhost:8000/getEqualTo/all${tableName}?label=${filter.toLowerCase()}&value=${filterValue}`
+        url = `https://humbletitan-stocks.herokuapp.com/getEqualTo/all${tableName}?label=${filter.toLowerCase()}&value=${filterValue}`
         break
       case 'Greater Than':
-        url = `http://localhost:8000/getGreaterThan/all${tableName}?label=${filter.toLowerCase()}&value=${filterValue}`
+        url = `https://humbletitan-stocks.herokuapp.com/getGreaterThan/all${tableName}?label=${filter.toLowerCase()}&value=${filterValue}`
         break
       case 'Less Than':
-        url = `http://localhost:8000/getLessThan/all${tableName}?label=${filter.toLowerCase()}&value=${filterValue}`
+        url = `https://humbletitan-stocks.herokuapp.com/getLessThan/all${tableName}?label=${filter.toLowerCase()}&value=${filterValue}`
         break
       case 'Starting With':
-        url = `http://localhost:8000/getStartingWith/all${tableName}?label=${filter.toLowerCase()}&value=${filterValue}`
+        url = `https://humbletitan-stocks.herokuapp.com/getStartingWith/all${tableName}?label=${filter.toLowerCase()}&value=${filterValue}`
         break
       case 'Ending With':
-        url = `http://localhost:8000/getEndingWith/all${tableName}?label=${filter.toLowerCase()}&value=${filterValue}`
+        url = `https://humbletitan-stocks.herokuapp.com/getEndingWith/all${tableName}?label=${filter.toLowerCase()}&value=${filterValue}`
         break
       default:
         url = ''
